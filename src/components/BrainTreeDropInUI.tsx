@@ -1,6 +1,6 @@
-import { Dropin } from "braintree-web-drop-in";
+import { Dropin, PaymentMethodPayload } from "braintree-web-drop-in";
 import Script from "next/script";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export type BraiTreeDropinUIProps = {
   authorization: string;
@@ -8,6 +8,7 @@ export type BraiTreeDropinUIProps = {
 
 const BraiTreeDropinUI = (props: BraiTreeDropinUIProps) => {
   const { authorization } = props;
+  const [paymentPayload, setPayload] = useState<PaymentMethodPayload>();
   const braintreeDropinInstance = useRef<Dropin>();
 
   const initialiseDropInUI = async () => {
@@ -29,6 +30,7 @@ const BraiTreeDropinUI = (props: BraiTreeDropinUIProps) => {
       .requestPaymentMethod()
       .then((payload) => {
         console.log(payload);
+        setPayload(payload);
       })
       .catch((err) => console.log(err));
   };
@@ -42,6 +44,12 @@ const BraiTreeDropinUI = (props: BraiTreeDropinUIProps) => {
       >
         Continue
       </button>
+      {paymentPayload ? (
+        <>
+          <h2>Received Payload</h2>
+          <pre>{JSON.stringify(paymentPayload, null, 2)}</pre>
+        </>
+      ) : null}
       <Script
         src="https://js.braintreegateway.com/web/dropin/1.43.0/js/dropin.min.js"
         onReady={() => void initialiseDropInUI()}

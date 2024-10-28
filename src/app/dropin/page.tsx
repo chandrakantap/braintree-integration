@@ -1,7 +1,6 @@
 "use client";
 
 import BraiTreeDropinUI from "@/components/BrainTreeDropInUI";
-import PaypalCheckout from "@/components/PaypalCheckout";
 import { useQuery } from "@tanstack/react-query";
 
 export default function Home() {
@@ -13,12 +12,9 @@ export default function Home() {
     return null;
   }
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col justify-center items-center gap-8 h-screen">
       <div className="w-full md:w-1/2 mx-auto">
         <BraiTreeDropinUI authorization={data.clientToken} />
-      </div>
-      <div className="w-full md:w-1/2 mx-auto">
-        <PaypalCheckout authorization={data.clientToken} />
       </div>
     </div>
   );
