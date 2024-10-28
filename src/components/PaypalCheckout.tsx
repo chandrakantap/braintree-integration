@@ -28,6 +28,10 @@ const PaypalCheckout = (props: PaypalCheckoutProps) => {
         return window.paypal
           .Buttons({
             fundingSource: "paypal",
+            style: {
+              color: "white",
+              shape: "pill",
+            },
             createOrder: function () {
               return paypalCheckoutInstance.createPayment({
                 flow: "checkout",

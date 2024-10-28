@@ -5,7 +5,7 @@ export async function GET() {
     environment: braintree.Environment.Sandbox,
     merchantId: "vpz2dppz6kybj8jd",
     publicKey: "4c3czxxjr2bznmq9",
-    privateKey: "",
+    privateKey: process.env.PRIVATE_KEY || "",
   });
   const clientToken = await gateway.clientToken
     .generate({})

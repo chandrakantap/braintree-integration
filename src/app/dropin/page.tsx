@@ -12,7 +12,7 @@ export default function Home() {
     return null;
   }
   return (
-    <div className="flex flex-col justify-center items-center gap-8 h-screen">
+    <div className="flex flex-col justify-center items-center gap-8 h-screen p-8">
       <div className="w-full md:w-1/2 mx-auto">
         <BraiTreeDropinUI authorization={data.clientToken} />
       </div>

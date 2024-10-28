@@ -12,7 +12,7 @@ export default function Home() {
     return null;
   }
   return (
-    <div className="flex flex-col justify-center items-center gap-8 h-screen">
+    <div className="flex flex-col justify-center items-center gap-8 h-screen p-12">
       <div className="w-full md:w-1/2 mx-auto">
         <PaypalCheckout authorization={data.clientToken} />
       </div>
